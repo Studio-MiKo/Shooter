@@ -1,0 +1,54 @@
+# Unity auto-generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+
+# Ignore meta files only if corresponding asset is ignored
+!/[Aa]ssets/**/*.meta
+
+# Uncomment if using Asset Store Tools
+# /[Aa]ssets/AssetStoreTools*
+
+# JetBrains Rider
+/[Aa]ssets/Plugins/Editor/JetBrains*
+
+# Visual Studio
+.vs/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.tmp
+*.pidb
+*.booproj
+*.opendb
+*.VC.db
+
+# Unity-specific
+sysinfo.txt
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Builds
+*.apk
+# *.unitypackage
+
+# Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Temporary files
+.ftGlobalStorage.asset
+.ftracelog.txt
+.uvgblog.txt
+
+# Gradle
+.gradle/
