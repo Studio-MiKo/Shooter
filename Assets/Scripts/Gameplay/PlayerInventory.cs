@@ -25,15 +25,15 @@ public class PlayerInventory : MonoBehaviour
             inventory.AddItem(item); // Добавляем новый предмет
         }
 
-        UpdateUI(); // Обновляем UI инвентаря
+        // UpdateUI(); // Обновляем UI инвентаря
     }
 
-    private void UpdateUI()
-    {
-        GameObject uiManager = FindObjectOfType<InventoryUI>().gameObject;
-        if (uiManager != null)
-        {
-            uiManager.GetComponent<InventoryUI>().UpdateUI();
-        }
-    }
+    // private void UpdateUI()
+    // {
+    //     GameObject uiManager = FindObjectOfType<InventoryUI>().gameObject;
+    //     if (uiManager != null)
+    //     {
+    //         uiManager.GetComponent<InventoryUI>().UpdateUI();
+    //     }
+    // }
 }
