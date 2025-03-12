@@ -6,24 +6,23 @@ public class PlayerInventory : MonoBehaviour
 
     public void PickupItem(Item item) 
     {
-        Debug.Log($"Предмет добавлен в инвентарь: {item.name}"); // Проверяем, вызывается ли метод
+        inventory.AddItem(item);
+        // bool found = false;
 
-        bool found = false;
+        // foreach (var invItem in inventory.items)
+        // {
+        //     if (invItem.name == item.name && invItem.type == item.type)
+        //     {
+        //         invItem.quantity += item.quantity; 
+        //         found = true;
+        //         break;
+        //     }
+        // }
 
-        foreach (var invItem in inventory.items)
-        {
-            if (invItem.name == item.name && invItem.type == item.type)
-            {
-                invItem.quantity += item.quantity; // Увеличиваем количество
-                found = true;
-                break;
-            }
-        }
-
-        if (!found)
-        {
-            inventory.AddItem(item); // Добавляем новый предмет
-        }
+        // if (!found)
+        // {
+        //     inventory.AddItem(item); 
+        // }
 
         // UpdateUI(); // Обновляем UI инвентаря
     }
