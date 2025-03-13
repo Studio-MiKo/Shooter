@@ -1,58 +1,34 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float moveSpeed = 2f; 
-    public float attackRange = 2f; 
-    public float attackDamage = 10f; 
-    public float attackCooldown = 1f; // Задержка между атаками
+    public Transform player; // Ссылка на игрока
+    public float detectionRadius = 5f; // Радиус обнаружения игрока
+    public float attackRadius = 1f; // Радиус атаки
 
-    private Transform player; 
-    private Health enemyHealth; 
-    private bool canAttack = true; // Флаг для атаки
+    private NavMeshAgent agent;
+    //private Animator animator;
 
-    private void Start()
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemyHealth = GetComponent<Health>();
+        agent = GetComponent<NavMeshAgent>();
+        //animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (player == null) return;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        Vector3 position = transform.position;
-        position.y = 0;
-        transform.position = position;
-
-        MoveTowardsPlayer();
-
-        if (Vector3.Distance(transform.position, player.position) <= attackRange && canAttack)
+        if (distanceToPlayer <= detectionRadius && distanceToPlayer > attackRadius)
         {
-            Attack();
+            agent.SetDestination(player.position);
+            //animator.SetFloat("speed", 1f);
         }
-    }
-
-    private void MoveTowardsPlayer()
-    {
-        Vector3 direction = (player.position - transform.position).normalized;
-        transform.position += direction * moveSpeed * Time.deltaTime;
-    }
-
-    private void Attack()
-    {
-        Health playerHealth = player.GetComponent<Health>();
-        if (playerHealth != null)
+        else
         {
-            playerHealth.TakeDamage(attackDamage);
+            agent.ResetPath();
+            //animator.SetFloat("speed", 0f);
         }
-
-        canAttack = false;
-        Invoke("ResetAttack", attackCooldown);
-    }
-
-    private void ResetAttack()
-    {
-        canAttack = true;
     }
 }
