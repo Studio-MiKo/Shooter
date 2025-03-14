@@ -1805,6 +1805,7 @@ GameObject:
   - component: {fileID: 39190369}
   - component: {fileID: 39190372}
   - component: {fileID: 39190371}
+  - component: {fileID: 39190373}
   m_Layer: 5
   m_Name: QuickBarUI
   m_TagString: Untagged
@@ -1873,6 +1874,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39190368}
   m_CullTransparentMesh: 1
+--- !u!114 &39190373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39190368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcae5b2eb1d6807489326cd16145a110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponIcon: {fileID: 1152559004}
+  ammoCount: {fileID: 970171898}
+  healthBar: {fileID: 640059855}
 --- !u!4 &40016592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2168679137804063677, guid: ec6a508d43c319f4e9a29995ea6c3489, type: 3}
@@ -10464,20 +10480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe1a4d3f3b670e49a64543374e94815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &254291541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254291535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2986946def3407e4bac604c73759a52d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
 --- !u!1001 &257233577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19178,8 +19180,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1cb4a9b7100920d46b2638174017724c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4d25813be5f934e47b252dab9fa0185e, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 1cb4a9b7100920d46b2638174017724c, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19252,7 +19258,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -19268,6 +19274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2986946def3407e4bac604c73759a52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickBarManager: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &490401443
@@ -19282,9 +19289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9b245eadf8b5b4ba1e41b8912a6a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 254291536}
-  detectionRadius: 5
-  attackRadius: 1
+  chaseDistance: 10
+  attackDistance: 1.5
+  attackDamage: 10
+  attackCooldown: 2
 --- !u!195 &490401444
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19295,7 +19303,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -42586,9 +42594,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1927095934725912876, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 254291540}
-    - targetCorrespondingSourceObject: {fileID: 1927095934725912876, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1927095933604403118, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 254291541}
+      addedObject: {fileID: 1376558117}
   m_SourcePrefab: {fileID: 100100000, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
 --- !u!4 &1002547122 stripped
 Transform:
@@ -49283,6 +49291,10 @@ PrefabInstance:
     - target: {fileID: 8769131554781824903, guid: 6723febf70d07b7469fbcddd65e8660b, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769131554781824903, guid: 6723febf70d07b7469fbcddd65e8660b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8769131554781824903, guid: 6723febf70d07b7469fbcddd65e8660b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -58262,6 +58274,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1017606091530846216, guid: c5be39b879c83f54d9bbfebe68c809be, type: 3}
   m_PrefabInstance: {fileID: 800829943}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1376558114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1927095933604403118, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
+  m_PrefabInstance: {fileID: 1001927403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1376558117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376558114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2986946def3407e4bac604c73759a52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quickBarManager: {fileID: 39190373}
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1001 &1377441967
 PrefabInstance:
   m_ObjectHideFlags: 0
