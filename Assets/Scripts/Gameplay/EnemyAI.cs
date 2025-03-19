@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float chaseDistance = 10f; // Радиус обнаружения игрока
+     public float chaseDistance = 10f; // Радиус обнаружения игрока
     public float attackDistance = 1.5f; // Радиус атаки
     public float attackDamage = 10f; // Урон от атаки
     public float attackCooldown = 1f; // Задержка между атаками
@@ -27,9 +27,9 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = true;
     }
 
-    void Update()
+     void Update()
     {
-        if (health != null && health.currentHealth <= 0)
+         if (health != null && health.currentHealth <= 0)
         {
             Die();
             return;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SojaExiles
 
@@ -15,12 +13,9 @@ namespace SojaExiles
 
         Vector3 velocity;
 
-        bool isGrounded;
-
-        // Update is called once per frame
+        // bool isGrounded;
         void Update()
         {
-
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -31,7 +26,6 @@ namespace SojaExiles
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
-
         }
     }
 }
