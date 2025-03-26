@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SojaExiles
 
@@ -8,11 +6,16 @@ namespace SojaExiles
     public class MouseLook : MonoBehaviour
     {
 
-        public float mouseXSensitivity = 100f;
+        public float mouseXSensitivity = 500f;
 
-        public Transform playerBody;
+        // public Transform playerBody;
+
+        public float topClamp = -90f;
+        public float bottomClamp = 90f;
 
         float xRotation = 0f;
+        float yRotation = 0f;
+        
 
         // Start is called before the first frame update
         void Start()
@@ -27,10 +30,12 @@ namespace SojaExiles
             float mouseY = Input.GetAxis("Mouse Y") * mouseXSensitivity * Time.deltaTime;
 
             xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = Mathf.Clamp(xRotation, topClamp, bottomClamp);
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            playerBody.Rotate(Vector3.up * mouseX);
+            yRotation += mouseX;
+
+            transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            // playerBody.Rotate(Vector3.up * mouseX);
         }
     }
 }

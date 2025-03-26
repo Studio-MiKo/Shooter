@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public float attackDistance = 1.5f; // Радиус атаки
     public float attackDamage = 10f; // Урон от атаки
     public float attackCooldown = 1f; // Задержка между атаками
+    public Slider healthBar;
 
     private Animator animator;
     private GameObject player;
@@ -20,6 +22,7 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
         health = GetComponent<Health>();
+        healthBar.value = health.currentHealth;
 
         // Инициализация скорости
         animator.SetFloat("speed", 0f);

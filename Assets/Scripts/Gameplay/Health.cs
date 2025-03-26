@@ -10,10 +10,6 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         quickBarManager = FindObjectOfType<QuickBarManager>();
-        if (quickBarManager == null)
-        {
-            Debug.LogWarning("QuickBarManager не найден!");
-        }
     }
 
     public void TakeDamage(float damage)
@@ -32,10 +28,7 @@ public class Health : MonoBehaviour
 
     private void UpdateHealthUI()
     {
-        if (quickBarManager != null)
-        {
-            quickBarManager.UpdateHealthBar((int)currentHealth);
-        }
+       
     }
 
     // Метод смерти (например, уничтожение объекта)
