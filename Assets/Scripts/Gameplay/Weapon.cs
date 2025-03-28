@@ -29,8 +29,16 @@ public class Weapon : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
-    // UI 
-    public TextMeshProUGUI ammoDisplay;
+    public Vector3 spawnPosition;
+    public Vector3 spawnRotation;
+
+    public enum WeaponModel
+    {
+        PistolM1911,
+        M107,
+    }
+
+    public WeaponModel thisWeaponModel;
 
     public enum ShootingMode
     {
@@ -52,6 +60,11 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        if(bulletsLeft == 0 && isShooting)
+        {
+            SoundManager.Instance.emptyMagazinSundM1911.Play();
+        }
+
        if(currentShootingMode == ShootingMode.Auto)
        {
             //Holding Down Left Mouse Button
@@ -72,18 +85,18 @@ public class Weapon : MonoBehaviour
         // Automatically reload when magazineSize is empty
         if(readyToShoot && isShooting == false && isReloading == false && bulletsLeft <= 0)
         {
-            Reload();
+            // Reload();
         }
 
-        if(readyToShoot && isShooting)
+        if(readyToShoot && isShooting && bulletsLeft > 0)
         {
             burstBulletsLeft = bulletPerBurst;
             FireWeapon();
         }
 
-        if(ammoDisplay != null)
+        if(AmmoManager.Instance.ammoDisplay != null)
         {
-            ammoDisplay.text = $"{bulletsLeft/bulletPerBurst}/{magazineSize/bulletPerBurst}";
+            AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft/bulletPerBurst}/{magazineSize/bulletPerBurst}";
         }
     }
     
@@ -93,7 +106,9 @@ public class Weapon : MonoBehaviour
 
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("RECOIL");
-        SoundManager.Instance.shootingSundM1911.Play();
+        
+        // SoundManager.Instance.shootingSundM1911.Play();
+        SoundManager.Instance.PlayShootingSound(thisWeaponModel);
 
         readyToShoot = false;
 
@@ -130,6 +145,11 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
+        // SoundManager.Instance.reloadingSundM1911.Play();
+        SoundManager.Instance.PlayReloadingSound(thisWeaponModel);
+
+        animator.SetTrigger("RELOAD"); 
+
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
     }

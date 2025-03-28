@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public QuickBarManager quickBarManager;
     public float maxHealth = 100f; 
     public float currentHealth; 
 
     private void Start()
     {
         currentHealth = maxHealth;
-        quickBarManager = FindObjectOfType<QuickBarManager>();
     }
 
     public void TakeDamage(float damage)
