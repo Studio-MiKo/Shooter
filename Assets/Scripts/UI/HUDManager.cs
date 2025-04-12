@@ -26,6 +26,8 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI tacticalAmountUI;
 
     public Sprite emptySlot;
+    public Sprite greySlot;
+    public GameObject middleDot;
     
     private void Awake()
     {
@@ -47,7 +49,7 @@ public class HUDManager : MonoBehaviour
         if(activeWeapon != null)
         {
             magazineAmmoUI.text = $"{activeWeapon.bulletsLeft / activeWeapon.bulletPerBurst}";
-            totalAmmoUI.text = $"{activeWeapon.magazineSize / activeWeapon.bulletPerBurst}";
+            totalAmmoUI.text = $"{WeaponManager.Instance.CheckAmmoLeftFor(activeWeapon.thisWeaponModel)}";
             
             Weapon.WeaponModel model = activeWeapon.thisWeaponModel;
             ammoTypeUI.sprite = GetAmmoSprite(model);
@@ -69,6 +71,12 @@ public class HUDManager : MonoBehaviour
             activeWeaponUI.sprite = emptySlot;
             unActiveWeaponUI.sprite = emptySlot;
         }
+
+
+        if(WeaponManager.Instance.lethalsCount <= 0)
+        {
+            lethalUI.sprite = greySlot;
+        }
     }
 
     private Sprite GetWeaponSprite(Weapon.WeaponModel model)
@@ -76,9 +84,9 @@ public class HUDManager : MonoBehaviour
         switch(model)
         {
             case Weapon.WeaponModel.PistolM1911:
-                return Instantiate(Resources.Load<GameObject>("PistolM1911_Weapon")).GetComponent<SpriteRenderer>().sprite;
+                return Resources.Load<GameObject>("PistolM1911_Weapon").GetComponent<SpriteRenderer>().sprite;
             case Weapon.WeaponModel.M107:
-                return Instantiate(Resources.Load<GameObject>("M107_Weapon")).GetComponent<SpriteRenderer>().sprite;
+                return Resources.Load<GameObject>("M107_Weapon").GetComponent<SpriteRenderer>().sprite;
             default:
                 return null;
         }
@@ -89,9 +97,9 @@ public class HUDManager : MonoBehaviour
         switch(model)
         {
             case Weapon.WeaponModel.PistolM1911:
-                return Instantiate(Resources.Load<GameObject>("Pistol_Ammo")).GetComponent<SpriteRenderer>().sprite;
+                return Resources.Load<GameObject>("Pistol_Ammo").GetComponent<SpriteRenderer>().sprite;
             case Weapon.WeaponModel.M107:
-                return Instantiate(Resources.Load<GameObject>("Rifle_Ammo")).GetComponent<SpriteRenderer>().sprite;
+                return Resources.Load<GameObject>("Rifle_Ammo").GetComponent<SpriteRenderer>().sprite;
             default:
                 return null;
         }
@@ -108,5 +116,17 @@ public class HUDManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    internal void UpdateThrowablesUI()
+    {
+        lethalAmountUI.text = $"{WeaponManager.Instance.lethalsCount}";
+
+        switch (WeaponManager.Instance.equippedLethalType)
+        {
+            case Throwables.ThrowableType.Grenade:
+                lethalUI.sprite = Resources.Load<GameObject>("Grenade").GetComponent<SpriteRenderer>().sprite;
+                break;
+        }
     }
 }
