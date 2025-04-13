@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3914947814361376248}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CINEMA_4D_Editor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8187236476580056844}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 5042999575648941127}
   - component: {fileID: 8925369810820341518}
   - component: {fileID: 4720099827273670579}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 5764496304777858886}
   - component: {fileID: 7368973083289445712}
   - component: {fileID: 6501851552057810813}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,12 +201,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActiveWeapon: 0
+  weaponDamage: 20
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.3
   bulletPerBurst: 1
   burstBulletsLeft: 0
-  spreadIntensity: 0
+  spreadIntensity: 0.05
   hipSpreadIntensity: 0.4
   adsSpreadIntensity: 0.04
   bulletPrefab: {fileID: 8990566412228190164, guid: 7f8ef71a34b05b541bfd1a8870cc275a, type: 3}
@@ -293,7 +294,7 @@ GameObject:
   - component: {fileID: 1617917391259015674}
   - component: {fileID: 3532181276875497945}
   - component: {fileID: 4283778096368087974}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Magazin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +377,7 @@ GameObject:
   - component: {fileID: 4287488460690814743}
   - component: {fileID: 3384461668841339807}
   - component: {fileID: 9028752983133943025}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +460,7 @@ GameObject:
   - component: {fileID: 7881621135117478368}
   - component: {fileID: 7758222429845867308}
   - component: {fileID: 1679417718556961508}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +543,7 @@ GameObject:
   - component: {fileID: 5940238777590747211}
   - component: {fileID: 475975656077351289}
   - component: {fileID: 8306581012044021504}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000011227296186, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_LocalScale.x

@@ -4,6 +4,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public bool isActiveWeapon;
+    public int weaponDamage;
+
     // Shooting
     [Header("Shooting")]
     public bool isShooting, readyToShoot;
@@ -74,6 +76,13 @@ public class Weapon : MonoBehaviour
     {
         if(isActiveWeapon)
         {
+            gameObject.layer = LayerMask.NameToLayer("WeaponRender");
+            // foreach(Transform child in transform)
+            // {
+            //     child.gameObject.layer = LayerMask.NameToLayer("WeaponRender");
+            //     Debug.Log($"{child.name} layer set to {LayerMask.LayerToName(child.gameObject.layer)}");
+            // }
+
             if(Input.GetMouseButtonDown(1))
             {
                 EnterADS();
@@ -120,6 +129,14 @@ public class Weapon : MonoBehaviour
                 FireWeapon();
             }
         }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+            // foreach(Transform child in transform)
+            // {
+            //     child.gameObject.layer = LayerMask.NameToLayer("Default");
+            // }
+        }
     }
 
     private void EnterADS()
@@ -158,14 +175,13 @@ public class Weapon : MonoBehaviour
 
         readyToShoot = false;
 
-        Debug.Log("Позиция bulletSpaw: " + bulletSpaw.position);
-        Debug.Log("Позиция камеры: " + Camera.main.transform.position);
-        Debug.Log("Расстояние между камерой и bulletSpaw: " + Vector3.Distance(Camera.main.transform.position, bulletSpaw.position));
-
         Vector3 shootingDirection = CalculateDirectionSpread().normalized;
 
         // Instantiate the bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpaw.position, Quaternion.identity);
+
+        Bullet bul = bullet.GetComponent<Bullet>();
+        bul.bulletDamage = weaponDamage;
 
         //Pointing the bullet to face the shooting direction
         bullet.transform.forward = shootingDirection;
