@@ -2768,7 +2768,7 @@ Transform:
   m_GameObject: {fileID: 62778859}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.055, y: 0.801, z: 0.541}
+  m_LocalPosition: {x: 0.055, y: 0.646, z: 0.953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75291,9 +75291,14 @@ MonoBehaviour:
   throwableSpawn: {fileID: 62778859}
   forceMultiplier: 0
   forceMultiplierLimit: 2
+  maxLethals: 2
   lethalsCount: 0
   equippedLethalType: 0
   grenadePrefabe: {fileID: 9039526090673848614, guid: df7a4fc23ab9c3e4987e3edbd50f350b, type: 3}
+  maxTacticals: 2
+  tacticalCount: 0
+  equippedTacticalType: 0
+  SmokeGrenadePrefab: {fileID: 1505738132189874994, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
 --- !u!4 &1730475105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5921126462729845301, guid: bee09117d2231334d90a559b1ff7f323, type: 3}
@@ -84230,6 +84235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletImpactEffectPrefab: {fileID: 4683329664165336074, guid: 8140340830ea4c64d8167bf18950571d, type: 3}
   grenadeExplosionEffect: {fileID: 100008, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
+  smokeGrenadeEffect: {fileID: 100000, guid: 5a4630d3d41eb154fb963600cf40e826, type: 3}
 --- !u!4 &1974580540
 Transform:
   m_ObjectHideFlags: 0
@@ -92365,6 +92371,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e491c7539ed2a46977ec02caf8c30d, type: 3}
+--- !u!1001 &2129524546344322018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.581
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.884
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.598
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880159066105625974, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505738132189874994, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3dbf03908d966d14a8b6b721d7da385e, type: 3}
 --- !u!1001 &8214822467682950780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92628,3 +92691,4 @@ SceneRoots:
   - {fileID: 8214822467682950780}
   - {fileID: 193217645}
   - {fileID: 1818866995}
+  - {fileID: 2129524546344322018}
