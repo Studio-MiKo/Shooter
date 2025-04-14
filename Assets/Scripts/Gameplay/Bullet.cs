@@ -31,9 +31,29 @@ public class Bullet : MonoBehaviour
         if(objectWeHeat.gameObject.CompareTag("Enemy"))
         {
             print("hit a zombie");
-            objectWeHeat.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage); 
+
+            if(objectWeHeat.gameObject.GetComponent<Enemy>().isDead == false)
+            {
+                objectWeHeat.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage); 
+            }
+
+            CreateBloodSprayEffect(objectWeHeat);
+
             Destroy(gameObject); 
         }   
+    }
+
+    private void CreateBloodSprayEffect(Collision objectWeHeat)
+    {
+        ContactPoint contact = objectWeHeat.contacts[0];
+
+        GameObject bloodSprayPrefab = Instantiate(
+            GlobalReferences.Instance.bloodSprayEffect,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+        );
+
+        bloodSprayPrefab.transform.SetParent(objectWeHeat.gameObject.transform);
     }
 
     private void CreateBulletImpactEffect(Collision objectWeHeat)
