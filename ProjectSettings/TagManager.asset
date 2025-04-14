@@ -10,6 +10,8 @@ TagManager:
   - Target
   - Wall
   - Bottle
+  - Waypoints
+  - ZmobieHand
   layers:
   - Default
   - TransparentFX
