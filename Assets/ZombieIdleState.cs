@@ -9,7 +9,7 @@ public class ZombieIdleState : StateMachineBehaviour
 
     Transform player;
 
-    public float detectionAreaRadius = 18f;
+    public float detectionAreaRadius = 10f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

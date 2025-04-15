@@ -12,7 +12,7 @@ public class ZombiePatrolingState : StateMachineBehaviour
     Transform player;
     NavMeshAgent agent;
 
-    public float detectionArea = 18f;
+    public float detectionArea = 10f;
     public float patrolSpeed = 2f;
 
     List<Transform> waypointsList = new List<Transform>();
@@ -42,6 +42,12 @@ public class ZombiePatrolingState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(SoundManager.Instance.zombieChanel.isPlaying == false)
+        {
+            SoundManager.Instance.zombieChanel.clip = SoundManager.Instance.zombieWalking;
+            SoundManager.Instance.zombieChanel.PlayDelayed(1f);
+        }
+
        // --- If agent arrived at eaypoint, move to next waepoint --- //
        if(agent.remainingDistance <= agent.stoppingDistance)
        {
@@ -67,5 +73,7 @@ public class ZombiePatrolingState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent.SetDestination(agent.transform.position);
+
+        SoundManager.Instance.zombieChanel.Stop();
     }
 }

@@ -21,11 +21,16 @@ public class ZombieAttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(SoundManager.Instance.zombieChanel.isPlaying == false)
+        {
+            SoundManager.Instance.zombieChanel.PlayOneShot(SoundManager.Instance.zombieAttack);
+        }
+
        LookAtPlayer();
 
        // --- Checking if the agent should stop Attacking --- //
 
-        float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
+       float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
 
        if(distanceFromPlayer > stopAttackingDistance)
        {
@@ -40,5 +45,11 @@ public class ZombieAttackState : StateMachineBehaviour
 
         var yRotation = agent.transform.eulerAngles.y;
         agent.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        SoundManager.Instance.zombieChanel.Stop();
     }
 }

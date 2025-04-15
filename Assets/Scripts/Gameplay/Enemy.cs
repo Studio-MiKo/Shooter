@@ -36,10 +36,16 @@ public class Enemy : MonoBehaviour
             }
 
             isDead = true;
+
+            // Dead Sound
+            SoundManager.Instance.zombieChanel2.PlayOneShot(SoundManager.Instance.zombieDeath);
         }
         else
         {
             animator.SetTrigger("DAMAGE");
+
+            // Hurt Sound
+            SoundManager.Instance.zombieChanel2.PlayOneShot(SoundManager.Instance.zombieHurt);
         }
     }
 
@@ -49,7 +55,7 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 2.5f); // Attacking // Stop Attacking
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, 18f); // Detection (Start Chasing)
+        Gizmos.DrawWireSphere(transform.position, 10f); // Detection (Start Chasing)
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, 21f); // Stop Chasing
